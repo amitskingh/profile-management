@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ profile.first_name }} {{ profile.last_name }} | Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+
+
+    
+    <div class="max-w-5xl mx-auto p-6">
+
+
+      <!-- Header Buttons -->
+      <div class="mt-10 mb-20 flex justify-start gap-4">
+        <a
+          href="{% url 'edit_profile' %}"
+          class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-md transition"
+        >
+          Edit Profile
+        </a>
+        <a
+          href="{% url 'logout_user' %}"
+          class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-2.5 rounded-md transition"
+        >
+          Logout
+        </a>
+      </div>
+      
+      <!-- Header -->
+      <div
+        class="flex flex-col md:flex-row items-center gap-6 bg-white rounded-xl shadow-sm p-6"
+      >
+        <div class="w-32 h-32 flex-shrink-0">
+          {% if profile.profile_picture %}
+          <img
+            src="{{ profile.profile_picture.url }}"
+            alt="Profile Picture"
+            class="w-32 h-32 rounded-full object-cover border-4 border-blue-600"
+          />
+          {% else %}
+          <div
+            class="w-32 h-32 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-4xl font-bold"
+          >
+            {{ profile.first_name|slice:":1" }}{{ profile.last_name|slice:":1"
+            }}
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="flex-1 text-center md:text-left">
+          <h1 class="text-3xl font-bold text-gray-900">
+            {{ profile.first_name }} {{ profile.last_name }}
+          </h1>
+          <p class="text-blue-600 text-lg font-medium mt-1">
+            {{ profile.email }}
+          </p>
+          <p class="text-gray-600">{{ profile.phone_number }}</p>
+          <p class="text-gray-500 mt-1">
+            {{ profile.city }}, {{ profile.state }}, {{ profile.country }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Bio Section -->
+      <div class="mt-8 bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-3">About Me</h2>
+        <p class="text-gray-700 leading-relaxed">
+          {{ profile.bio|default:"No bio available." }}
+        </p>
+      </div>
+
+      <!-- Personal Info -->
+      <div class="mt-8 bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+          Personal Details
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+          <p>
+            <span class="font-semibold">Date of Birth:</span> 
+              {{ profile.date_of_birth|date:"Y-m-d" }}
+          </p>
+          <p><span class="font-semibold">Gender:</span> {{ profile.gender }}</p>
+          <p>
+            <span class="font-semibold">Address:</span> {{ profile.address }}
+          </p>
+          <p>
+            <span class="font-semibold">ZIP Code:</span> {{ profile.zip_code }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="mt-8 bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Education</h2>
+
+        {% if profile %}
+        <div class="space-y-3">
+          <div
+            class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-gray-100 pb-3"
+          >
+            <div>
+              <h3 class="text-lg font-medium text-gray-900">
+                {{ profile.education_name }}
+              </h3>
+              <p class="text-gray-600">{{ profile.education_field }}</p>
+            </div>
+            <span class="text-blue-600 font-semibold mt-2 sm:mt-0"
+              >{{ profile.education_percentage }}%</span
+            >
+          </div>
+        </div>
+        {% else %}
+        <p class="text-gray-500 italic">No education details available.</p>
+        {% endif %}
+      </div>
+
+      <!-- Skills -->
+      <div class="mt-8 bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Skills</h2>
+
+        {% if profile.skills %}
+        <div class="flex flex-wrap gap-2">
+          {% for skill in profile.skills %}
+          <span
+            class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium"
+          >
+            {{ skill }}
+          </span>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="text-gray-500 italic">No skills listed yet.</p>
+        {% endif %}
+      </div>
+
+    </div>
+  </body>
+</html>
