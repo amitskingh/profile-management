@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
@@ -13,9 +15,15 @@ class UserProfile(models.Model):
     date_of_birth = models.DateField()
     gender = models.CharField(max_length=10)
     profile_picture = models.ImageField(upload_to='profile_pictures/')
-    education = models.CharField(max_length=100)
+
+    education_name = models.CharField(max_length=255)
+    education_field = models.CharField(max_length=255)
+    education_percentage = models.CharField(max_length=10)
+
+    
     skills = models.TextField()
     bio = models.TextField()
+    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
