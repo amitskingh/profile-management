@@ -56,7 +56,8 @@ def create_profile(request):
 
         # print(user_profile)
 
-        return redirect('/profile/')
+        return redirect('profile_view')
+
     
     return render(request, 'user_profile/profile_form.html')
 
@@ -64,6 +65,9 @@ def create_profile(request):
 
 @login_required
 def edit_profile(request):
+
+    if(not UserProfile.objects.filter(user=request.user).exists()):
+        return redirect('create_profile')
 
     profile = UserProfile.objects.get(user=request.user)
     
@@ -151,7 +155,8 @@ def edit_profile(request):
 
         profile.save()
 
-        return redirect('/profile/')
+        return redirect('profile_view')
+
 
 
     return render(request, 'user_profile/profile_form.html', {'profile': profile})
@@ -173,3 +178,13 @@ def profile_view(request):
 
 
     return render(request, "user_profile/profile.html", {"profile": profile})
+
+
+def not_found(request):
+    return render(request, 'user_profile/not_found.html')
+
+
+
+
+def landing(request):
+    return render(request, 'user_profile/landing.html')

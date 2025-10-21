@@ -45,7 +45,7 @@
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form method="POST" class="space-y-6">
-        {% csrf_token %}
+          {% csrf_token %}
           <div>
             <label for="email" class="block text-sm/6 font-medium text-gray-900"
               >Email address</label
@@ -92,13 +92,17 @@
           </div>
         </form>
 
-        <div class="mt-[10px] text-sm">
-          <p
-            class="mt-[8px] font-semibold text-indigo-600 hover:text-indigo-500"
+        {% if messages %}
+        <div class="mt-4 w-full max-w-md mx-auto">
+          <ul
+            class="p-4 rounded-lg shadow bg-rose-50 border border-rose-200 text-rose-700 text-sm space-y-2"
           >
-            Forgot password?
-          </p>
+            {% for msg in messages %}
+            <li class="font-semibold">{{ msg }}</li>
+            {% endfor %}
+          </ul>
         </div>
+        {% endif %}
       </div>
     </div>
   </body>

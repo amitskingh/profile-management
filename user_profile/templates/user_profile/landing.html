@@ -1,0 +1,150 @@
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div
+        class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <h1 class="text-2xl font-bold text-blue-600">ProfileVault</h1>
+        <div class="space-x-4">
+          <a
+            href="{% url 'login_user' %}"
+            class="text-gray-700 hover:text-blue-600 font-medium"
+            >Login</a
+          >
+          <a
+            href="{% url 'register_user' %}"
+            class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+            >Get Started</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="flex-1 flex flex-col justify-center items-center text-center px-6 py-20 bg-gradient-to-b from-blue-50 to-white"
+    >
+      <h2 class="text-4xl md:text-6xl font-extrabold mb-4 text-gray-800">
+        Manage Your <span class="text-blue-600">Profile</span> Effortlessly
+      </h2>
+      <p class="text-gray-600 text-lg max-w-2xl mb-8">
+        Create, update, and securely store your personal information — all in
+        one simple dashboard. Perfect for professionals and students alike.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="{% url 'register_user' %}"
+          class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+        >
+          Create Your Profile
+        </a>
+        <a
+          href="{% url 'login_user' %}"
+          class="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition"
+        >
+          Already a user?
+        </a>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">
+          Why Choose ProfileVault?
+        </h3>
+        <div class="grid gap-10 md:grid-cols-3">
+          <div
+            class="bg-blue-50 p-8 rounded-2xl text-center shadow hover:shadow-lg transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-12 h-12 mx-auto mb-4 text-blue-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M12 6v6l4 2"
+              />
+            </svg>
+            <h4 class="font-semibold text-lg mb-2">Quick Setup</h4>
+            <p class="text-gray-600 text-sm">
+              Start creating your profile in minutes — no complex setup
+              required.
+            </p>
+          </div>
+          <div
+            class="bg-blue-50 p-8 rounded-2xl text-center shadow hover:shadow-lg transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-12 h-12 mx-auto mb-4 text-blue-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <h4 class="font-semibold text-lg mb-2">Secure Data</h4>
+            <p class="text-gray-600 text-sm">
+              Your data is encrypted and securely stored — your privacy comes
+              first.
+            </p>
+          </div>
+          <div
+            class="bg-blue-50 p-8 rounded-2xl text-center shadow hover:shadow-lg transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-12 h-12 mx-auto mb-4 text-blue-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M3 7h18M3 12h18M3 17h18"
+              />
+            </svg>
+            <h4 class="font-semibold text-lg mb-2">Organized Dashboard</h4>
+            <p class="text-gray-600 text-sm">
+              Easily view and update all your information from one intuitive
+              dashboard.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 mt-auto">
+      <div class="max-w-6xl mx-auto text-center px-6">
+        <p class="mb-2">&copy; 2025 ProfileVault. All rights reserved.</p>
+        <p>
+          Built with <span class="text-blue-400">Tailwind CSS</span> & ❤️ by
+          <span class="font-semibold text-white">Your Team</span>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

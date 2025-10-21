@@ -235,14 +235,28 @@
         </div>
 
         <div class="mt-6">
-          <ul class="border-1 w-full shadow-sm p-4 text-rose-600 text-sm">
-            <li>Password must be at least 8 characters long</li>
+          <ul
+            class="border border-gray-300 w-full shadow-sm p-4 text-gray-700 text-sm bg-gray-50 rounded-lg"
+          >
+            <li class="font-medium">
+              Password must be at least 8 characters long
+            </li>
             <li>
               Password must contain at least one uppercase letter, one special
-              character and a number
+              character, and a number
             </li>
           </ul>
         </div>
+
+        {% if messages %}
+        <div class="mt-[10px] text-sm">
+          <ul class="border-1 w-full shadow-sm p-4 text-rose-600 text-sm">
+            {% for msg in messages %}
+            <li class="font-bold">{{ msg }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
 
         <div class="mt-10">
           <button
